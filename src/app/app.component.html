@@ -1,7 +1,8 @@
 		<section class="todoapp">
 			<header class="header">
-				<app-title></app-title>
-				<input class="new-todo" [placeholder]="inputHint" autofocus>
+        <app-title></app-title>
+        <!-- 屬性繫結：在要繫結的屬性對象加上中括號 -->
+				<input class="new-todo" [placeholder]="inputHint" autofocus [(ngModel)]="todo" (keyup.enter)="addTodo()">
 			</header>
 			<!-- This section should be hidden by default and shown when there are todos -->
 			<section class="main">

@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   inputHint = "Add Todo...";
+  todos: any[] = [];
+  todo = '';
+
+  addTodo() {
+    this.todos.push(this.todo);
+    this.todo = "";
+  }
 }
