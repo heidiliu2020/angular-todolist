@@ -1,0 +1,30 @@
+<header class="header">
+  <div class="input-group">
+    <!-- 屬性綁定 / 雙向綁定 -->
+    <input
+      class="todo-input" [placeholder]="inputHint" autofocus maxlength="50"
+      [(ngModel)]="todo" (keyup.enter)="addTodo()"
+    >
+    <button class="btn-add" (click)="addTodo()"></button>
+  </div>
+</header>
+
+<!-- *ngIf: 判斷布林值 -->
+<section class="main" *ngIf="todos.length > 0">
+  <ul class="todo-list">
+    <!-- *ngFor: 跑迴圈 / 自訂一個 filter pipe: 篩選 Todos-->
+    <li *ngFor="let item of todos | filter : filterType" [ngClass]="{'completed': item.done}">
+      <div class="view">
+        <input class="toggle" type="checkbox" [(ngModel)]="item.done" (ngModelChange)="updateToggleAllState()">
+        <!-- 使用 pipe: uppercase 會統一將輸出轉成大寫 -->
+        <label>{{item.text | uppercase}}</label>
+        <button class="btn-destroy" (click)="removeTodo(item)"></button>
+      </div>
+    </li>
+  </ul>
+</section>
+
+<app-footer *ngIf="todos.length > 0" [todos]="todos"
+  (clearCompleted)="clearCompleted()"
+  (filterTypeChanged)="filterTypeChanged($event)">
+</app-footer>

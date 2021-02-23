@@ -1,33 +1,12 @@
-		<section class="todoapp">
-			<header class="header">
-        <app-title></app-title>
-        <!-- 屬性繫結：在要繫結的屬性對象加上中括號 -->
-				<input class="new-todo" [placeholder]="inputHint" autofocus [(ngModel)]="todo" (keyup.enter)="addTodo()">
-			</header>
-      <!-- *ngIf: 判斷式 -->
-			<section class="main" *ngIf="todos.length > 0">
-				<input class="toggle-all" type="checkbox" [(ngModel)]="toggleAll" (ngModelChange)="toggleAllChange($event)">
-				<label for="toggle-all">Mark all as complete</label>
-				<ul class="todo-list">
-          <!-- *ngFor: 跑迴圈 -->
-					<li *ngFor="let item of todos | filter : filterType" [ngClass]="{'completed': item.done}">
-						<div class="view">
-							<input class="toggle" type="checkbox" [(ngModel)]="item.done" (ngModelChange)="updateToggleAllState()">
-              <!-- 使用 pipe: uppercase 會統一將輸出轉成大寫 -->
-							<label>{{item.text | uppercase}}</label>
-							<button class="destroy" (click)="removeTodo(item)"></button>
-						</div>
-						<input class="edit" value="Rule the web">
-					</li>
-				</ul>
-			</section>
-      <app-footer *ngIf="todos.length > 0" [todos]="todos"
-        (clearCompleted)="clearCompleted()"
-        (filterTypeChanged)="filterTypeChanged($event)"></app-footer>
-		</section>
-		<footer class="info">
-			<p>Double-click to edit a todo</p>
-			<p>Template by <a href="http://sindresorhus.com">Sindre Sorhus</a></p>
-			<p>Created by <a href="http://todomvc.com">you</a></p>
-			<p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
-		</footer>
+<div class="todo-container">
+   <!-- 內嵌綁定 -->
+  <h1>{{title}}</h1>
+  <app-todo-list></app-todo-list>
+</div>
+
+<footer class="info">
+  <p>Double-click to edit a todo</p>
+  <p>Template by <a href="http://sindresorhus.com">Sindre Sorhus</a></p>
+  <p>Created by <a href="http://todomvc.com">you</a></p>
+  <p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+</footer>
