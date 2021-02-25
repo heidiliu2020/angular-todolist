@@ -1,4 +1,4 @@
-<footer class="footer">
+<div class="todo-status">
   <span class="todo-count"><strong>{{todos.length}}</strong> item left</span>
   <ul class="filters">
     <li>
@@ -12,4 +12,4 @@
     </li>
   </ul>
   <button class="clear-completed" *ngIf="todos.length > 0" (click)="clearBtnOnClick()">Clear completed</button>
-</footer>
+</div>

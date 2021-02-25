@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-import { TodoService } from '../todo.service';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-todo-list',
@@ -9,47 +8,54 @@ import { TodoService } from '../todo.service';
 })
 export class TodoListComponent implements OnInit {
   inputHint = 'Add New Todo Here...';
-  todos: any[] = [];
+  todos = [];
   todo = '';
   filterType = 'All';
   results: string[];
   toggleAll: boolean;
+  contenteditable = false;
 
-  // Inject HttpClient into your component or service.
-  constructor(
-    private todoService: TodoService
-  ) { }
+  // 建構子: 注入依賴
+  constructor(private storageService: StorageService) {
+    const todoArr = this.storageService.getData('todos');
+    if (todoArr) {
+      this.todos = todoArr;
+    }
+  }
 
-  // 透過 API
-  ngOnInit() {
-    // this.getTodos().subscribe(data => {
-    //   this.todos = data;
-    // });
+  // 初始化時呼叫
+  ngOnInit(): void { }
+
+  // 儲存資料到 locagStorage
+  saveTodos(): void {
+    this.storageService.setData('todos', this.todos)
   }
 
   // 新增 Todo
-  addTodo() {
+  addTodo(): void {
     if (!this.todo.trim()) { return; }    // input 為空則返回
     this.todos.push({     // 把狀態暫存在 model
       text: this.todo,
-      done: false
+      done: false,
     });
     this.todo = '';
-  }
-
-  // 清除已完成 Todos
-  clearCompleted() {     // 外層元件接收到訊息後要執行的動作
-    this.todos = this.todos.filter(item => {return !item.done; });
-  }
-
-  // 篩選 Todos 狀態
-  filterTypeChanged(filterType: string) {
-    this.filterType = filterType;
+    this.saveTodos();
   }
 
   // 刪除 Todo
-  removeTodo(todo) {
-    console.log('delete')
+  removeTodo(todo): void {
     this.todos.splice(this.todos.indexOf(todo), 1);
+    this.saveTodos();
+  }
+
+  // 清除已完成 Todos
+  clearCompleted(): void {     // 外層元件接收到訊息後要執行的動作
+    this.todos = this.todos.filter(todo => !todo.done);
+    this.saveTodos();
+  }
+
+  // 篩選 Todos 狀態
+  filterTypeChanged(filterType: string): void {
+    this.filterType = filterType;
   }
 }

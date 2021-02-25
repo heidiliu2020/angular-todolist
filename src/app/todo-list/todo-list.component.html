@@ -1,30 +1,29 @@
-<header class="header">
-  <div class="input-group">
-    <!-- 屬性綁定 / 雙向綁定 -->
-    <input
-      class="todo-input" [placeholder]="inputHint" autofocus maxlength="50"
-      [(ngModel)]="todo" (keyup.enter)="addTodo()"
-    >
-    <button class="btn-add" (click)="addTodo()"></button>
-  </div>
-</header>
+<div class="input-group">
+  <!-- 屬性綁定 / 雙向綁定 / 事件綁定-->
+  <input
+    class="todo-input" [placeholder]="inputHint" maxlength="50"
+    [(ngModel)]="todo" (keyup.enter)="addTodo()"
+  >
+  <button class="btn-add" (click)="addTodo()"></button>
+</div>
 
 <!-- *ngIf: 判斷布林值 -->
 <section class="main" *ngIf="todos.length > 0">
   <ul class="todo-list">
     <!-- *ngFor: 跑迴圈 / 自訂一個 filter pipe: 篩選 Todos-->
-    <li *ngFor="let item of todos | filter : filterType" [ngClass]="{'completed': item.done}">
+    <li *ngFor="let todo of todos | filter : filterType" (change)="saveTodos()">
       <div class="view">
-        <input class="toggle" type="checkbox" [(ngModel)]="item.done" (ngModelChange)="updateToggleAllState()">
-        <!-- 使用 pipe: uppercase 會統一將輸出轉成大寫 -->
-        <label>{{item.text | uppercase}}</label>
-        <button class="btn-destroy" (click)="removeTodo(item)"></button>
+        <input class="toggle" type="checkbox" [(ngModel)]="todo.done">
+        <label contenteditable="true"
+          (input)="todo.text = $event.target.innerText" (blur)="saveTodos()"
+        >{{todo.text}}</label>
+        <button class="btn-destroy" (click)="removeTodo(todo)"></button>
       </div>
     </li>
   </ul>
 </section>
 
-<app-footer *ngIf="todos.length > 0" [todos]="todos"
+<app-todo-status *ngIf="todos.length > 0" [todos]="todos"
   (clearCompleted)="clearCompleted()"
   (filterTypeChanged)="filterTypeChanged($event)">
-</app-footer>
+</app-todo-status>
