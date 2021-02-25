@@ -1,0 +1,29 @@
+<div class="input-group">
+  <!-- 屬性綁定 / 雙向綁定 / 事件綁定-->
+  <input
+    class="todo-input" [placeholder]="inputHint" maxlength="50"
+    [(ngModel)]="todo" (keyup.enter)="addTodo()"
+  >
+  <button class="btn-add" (click)="addTodo()"></button>
+</div>
+
+<!-- *ngIf: 判斷布林值 -->
+<section class="main" *ngIf="todos.length > 0">
+  <ul class="todo-list">
+    <!-- *ngFor: 跑迴圈 / 自訂一個 filter pipe: 篩選 Todos-->
+    <li *ngFor="let todo of todos | filter : filterType" (change)="saveTodos()">
+      <div class="view">
+        <input class="toggle" type="checkbox" [(ngModel)]="todo.done">
+        <label contenteditable="true"
+          (input)="todo.text = $event.target.innerText" (blur)="saveTodos()"
+        >{{todo.text}}</label>
+        <button class="btn-destroy" (click)="removeTodo(todo)"></button>
+      </div>
+    </li>
+  </ul>
+</section>
+
+<app-todo-status *ngIf="todos.length > 0" [todos]="todos"
+  (clearCompleted)="clearCompleted()"
+  (filterTypeChanged)="filterTypeChanged($event)">
+</app-todo-status>
