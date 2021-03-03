@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from 'src/app/app.component';
 import { TodoListComponent } from 'src/app/todo-list/todo-list.component';
-import { TodoStatusComponent } from 'src/app/todo-status/todo-status.component';
+import { TodoListFooterComponent } from 'src/app/todo-list-footer/todo-list-footer.component';
 
 import { FilterPipe } from 'src/app/pipes/filter.pipe';
 import { StorageService } from 'src/app/services/storage.service';
@@ -13,7 +13,7 @@ import { StorageService } from 'src/app/services/storage.service';
   declarations: [
     AppComponent,
     TodoListComponent,
-    TodoStatusComponent,
+    TodoListFooterComponent,
     FilterPipe
   ],
   imports: [
