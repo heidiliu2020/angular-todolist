@@ -1,11 +1,11 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'app-todo-status',
-  templateUrl: './todo-status.component.html',
-  styleUrls: ['./todo-status.component.css']
+  selector: 'app-todo-list-footer',
+  templateUrl: './todo-list-footer.component.html',
+  styleUrls: ['./todo-list-footer.component.css']
 })
-export class TodoStatusComponent implements OnInit {
+export class TodoListFooterComponent implements OnInit {
   filterType = 'All';     // 預設篩選 All
 
   // Input Decorator: 接著來自父元件的資料
@@ -21,8 +21,7 @@ export class TodoStatusComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {  }
 
   // 透過 EventEmitter 把資料傳到上層元件 app-todo-list
   clearBtnOnClick(): void {

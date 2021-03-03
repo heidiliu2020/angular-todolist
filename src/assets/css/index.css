@@ -1,4 +1,4 @@
-.todo-list-container {
+.wrapper {
 	background: #fff;
 	margin: 130px 0 40px 0;
 	position: relative;
@@ -6,25 +6,25 @@
 	            0 25px 50px 0 rgba(0, 0, 0, 0.1);
 }
 
-.todo-list-container input::-webkit-input-placeholder {
+.wrapper input::-webkit-input-placeholder {
 	font-style: italic;
 	font-weight: 300;
 	color: #ddd;
 }
 
-.todo-list-container input::-moz-placeholder {
+.wrapper input::-moz-placeholder {
 	font-style: italic;
 	font-weight: 300;
 	color: #ddd;
 }
 
-.todo-list-container input::input-placeholder {
+.wrapper input::input-placeholder {
 	font-style: italic;
 	font-weight: 300;
 	color: #ddd;
 }
 
-.todo-list-container h1 {
+.wrapper h1 {
 	position: absolute;
 	top: -155px;
 	width: 100%;
@@ -32,16 +32,13 @@
 	font-weight: 100;
 	text-align: center;
 	color: rgba(175, 47, 47, 0.15);
-	-webkit-text-rendering: optimizeLegibility;
-	-moz-text-rendering: optimizeLegibility;
-	text-rendering: optimizeLegibility;
 }
 
 .input-group {
   position: relative;
 }
 
-.todo-input {
+.input-add-todo {
 	margin: 0;
 	width: 100%;
 	font-size: 24px;
@@ -50,22 +47,16 @@
 	line-height: 1.4em;
 	border: 0;
 	color: inherit;
-	padding: 6px;
-	border: 1px solid #999;
-	box-shadow: inset 0 -1px 5px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px 16px 16px 60px;
+	border: none;
+  box-shadow: inset 0 -2px 1px rgba(0,0,0,0.03);
 	box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.003);
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
 
-.todo-input {
-	padding: 16px 16px 16px 60px;
-	border: none;
-	background: rgba(0, 0, 0, 0.003);
-	box-shadow: inset 0 -2px 1px rgba(0,0,0,0.03);
-}
-
-.btn-add {
+.btn-add-todo {
   position: absolute;
 	top: 0;
 	right: 10px;
@@ -78,17 +69,14 @@
 	transition: color 0.2s ease-out;
 }
 
-.btn-add:before {
-  content: '+';
-}
-
-.main {
-	position: relative;
-	z-index: 2;
-	border-top: 1px solid #e6e6e6;
+.btn-add-todo:before {
+  content: '＋';
 }
 
 .todo-list {
+  position: relative;
+	z-index: 2;
+	border-top: 1px solid #e6e6e6;
 	margin: 0;
 	padding: 0;
 	list-style: none;
@@ -114,18 +102,18 @@
 	padding: 0;
 }
 
-.todo-list li.editing .edit {
+.todo-list li.editing .input-edit-todo {
 	display: block;
 	width: calc(100% - 43px);
 	padding: 12px 16px;
-	margin: 0 0 0 43px;
+	margin-left: 43px;
 }
 
-.todo-list li.editing .view {
+.todo-list li.editing .todo-view {
 	display: none;
 }
 
-.todo-list li .toggle {
+.todo-list li .input-toggle-todo {
 	text-align: center;
 	width: 40px;
 	/* auto, since non-WebKit browsers doesn't support input styling */
@@ -139,11 +127,11 @@
 	appearance: none;
 }
 
-.todo-list li .toggle {
+.todo-list li .input-toggle-todo {
 	opacity: 0;
 }
 
-.todo-list li .toggle + label {
+.todo-list li .input-toggle-todo + label {
 	/*
 		Firefox requires `#` to be escaped - https://bugzilla.mozilla.org/show_bug.cgi?id=922433
 		IE and Edge requires *everything* to be escaped to render, so we do that instead of just the `#` - https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/7157459/
@@ -153,7 +141,7 @@
 	background-position: center left;
 }
 
-.todo-list li .toggle:checked + label {
+.todo-list li .input-toggle-todo:checked + label {
 	background-image: url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%22-10%20-18%20100%20135%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2250%22%20fill%3D%22none%22%20stroke%3D%22%23bddad5%22%20stroke-width%3D%223%22/%3E%3Cpath%20fill%3D%22%235dc2af%22%20d%3D%22M72%2025L42%2071%2027%2056l-4%204%2020%2020%2034-52z%22/%3E%3C/svg%3E');
 }
 
@@ -170,7 +158,7 @@
 	text-decoration: line-through;
 }
 
-.todo-list li .btn-destroy {
+.todo-list li .btn-destroy-todo {
 	position: absolute;
 	top: 0;
 	right: 10px;
@@ -183,19 +171,19 @@
 	transition: color 0.2s ease-out;
 }
 
-.todo-list li .btn-destroy:hover, .btn-add:hover {
+.todo-list li .btn-destroy-todo:hover, .btn-add-todo:hover {
 	color: #af5b5e;
 }
 
-.todo-list li .btn-destroy:after {
+.todo-list li .btn-destroy-todo:after {
 	content: '×';
 }
 
-.todo-list li:hover .btn-destroy {
+.todo-list li:hover .btn-destroy-todo {
 	display: block;
 }
 
-.todo-list li .edit {
+.todo-list li .input-edit-todo {
 	display: none;
 }
 
@@ -203,7 +191,7 @@
 	margin-bottom: -1px;
 }
 
-.edit {
+.input-edit-todo {
 	position: relative;
 	margin: 0;
 	width: 100%;
@@ -222,7 +210,7 @@
 }
 
 
-.todo-status {
+.todo-list-footer {
 	color: #777;
 	padding: 10px 15px;
 	height: 20px;
@@ -230,7 +218,7 @@
 	border-top: 1px solid #e6e6e6;
 }
 
-.todo-status:before {
+.todo-list-footer:before {
 	content: '';
 	position: absolute;
 	right: 0;
@@ -245,16 +233,16 @@
 	            0 17px 2px -6px rgba(0, 0, 0, 0.2);
 }
 
-.todo-count {
+.todo-list-amount {
 	float: left;
 	text-align: left;
 }
 
-.todo-count strong {
+.todo-list-amount strong {
 	font-weight: 300;
 }
 
-.filters {
+.todo-list-filters {
 	margin: 0;
 	padding: 0;
 	list-style: none;
@@ -263,11 +251,11 @@
 	left: 0;
 }
 
-.filters li {
+.todo-list-filters li {
 	display: inline;
 }
 
-.filters li a {
+.todo-list-filters li a {
 	color: inherit;
 	margin: 3px;
 	padding: 3px 7px;
@@ -276,16 +264,16 @@
 	border-radius: 3px;
 }
 
-.filters li a:hover {
+.todo-list-filters li a:hover {
 	border-color: rgba(175, 47, 47, 0.1);
 }
 
-.filters li a.selected {
+.todo-list-filters li a.selected {
 	border-color: rgba(175, 47, 47, 0.2);
 }
 
-.clear-completed,
-html .clear-completed:active {
+.btn-clear-completed-todo,
+html .btn-clear-completed-todo:active {
 	float: right;
 	position: relative;
 	line-height: 20px;
@@ -293,7 +281,7 @@ html .clear-completed:active {
 	cursor: pointer;
 }
 
-.clear-completed:hover {
+.btn-clear-completed-todo:hover {
 	text-decoration: underline;
 }
 
@@ -321,24 +309,24 @@ html .clear-completed:active {
 
 /*
 	Hack to remove background from Mobile Safari.
-	Can't use it globally since it btn-destroys checkboxes in Firefox
+	Can't use it globally since it btn-destroy-todos checkboxes in Firefox
 */
 @media screen and (-webkit-min-device-pixel-ratio:0) {
-	.todo-list li .toggle {
+	.todo-list li .input-toggle-todo {
 		background: none;
 	}
 
-	.todo-list li .toggle {
+	.todo-list li .input-toggle-todo {
 		height: 40px;
 	}
 }
 
 @media (max-width: 430px) {
-	.todo-status {
+	.todo-list-footer {
 		height: 50px;
 	}
 
-	.filters {
+	.todo-list-filters {
 		bottom: 10px;
 	}
 }

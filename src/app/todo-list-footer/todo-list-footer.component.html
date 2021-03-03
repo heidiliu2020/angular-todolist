@@ -1,6 +1,6 @@
-<div class="todo-status">
-  <span class="todo-count"><strong>{{todos.length}}</strong> item left</span>
-  <ul class="filters">
+<div class="todo-list-footer">
+  <span class="todo-list-amount"><strong>{{todos.length}}</strong> item left</span>
+  <ul class="todo-list-filters">
     <li>
       <a class="selected" [ngClass]="{'selected': filterType === 'All'}" (click)="changeFilterType('All')">All</a>
     </li>
@@ -11,5 +11,5 @@
       <a [ngClass]="{'selected': filterType === 'Completed'}" (click)="changeFilterType('Completed')">Completed</a>
     </li>
   </ul>
-  <button class="clear-completed" *ngIf="todos.length > 0" (click)="clearBtnOnClick()">Clear completed</button>
+  <button class="btn-clear-completed-todo" *ngIf="todos.length > 0" (click)="clearBtnOnClick()">Clear completed</button>
 </div>
