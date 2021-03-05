@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { ITodo } from '../interfaces/todo';
 
 @Component({
   selector: 'app-todo-list-footer',
@@ -8,9 +9,9 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class TodoListFooterComponent implements OnInit {
   filterType = 'All';     // 預設篩選 All
 
-  // Input Decorator: 接著來自父元件的資料
+  // Input Decorator: 接住來自父元件的資料
   @Input()
-  todos: any[];
+  todos: ITodo[];
 
   // Output Decorator: 宣告要往外傳的事件 clearCompleted
   @Output()

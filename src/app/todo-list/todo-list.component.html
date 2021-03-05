@@ -1,20 +1,27 @@
 <div class="input-group">
   <!-- 屬性綁定 / 雙向綁定 / 事件綁定-->
-  <input
+   <input
     class="input-add-todo" [placeholder]="inputHint" maxlength="30"
     [(ngModel)]="todoTitle" (keyup.enter)="addTodo()" autofocus
   >
   <button class="btn-add-todo" (click)="addTodo()"></button>
 </div>
 
+<!--
+<app-todo-list-header
+  [(ngModel)]="todoTitle"
+  (handleAddTodo)="addTodo($event)">
+</app-todo-list-header> -->
+
 <!-- *ngIf: 判斷布林值 -->
 <ul class="todo-list" *ngIf="todos.length > 0">
   <!-- *ngFor: 跑迴圈 / 自訂一個 filter pipe: 篩選 Todos / ngClass: 設定 DOM 元素的 CSS class-->
-  <li *ngFor="let todo of todos | filter : filterType"
-    (change)="saveTodos()" [ngClass]="{completed: todo.done, editing: todo == editedTodo}"
+  <li *ngFor="let todo of todos | filter : filterType" @fade
+    (change)="todoService.saveTodos()"
+    [ngClass]="{completed: todo.isDone, editing: todo.isEditing}"
   >
     <div class="todo-view">
-      <input class="input-toggle-todo" type="checkbox" [(ngModel)]="todo.done">
+      <input type="checkbox" class="input-toggle-todo" [(ngModel)]="todo.isDone">
       <label for="editInput" (click)="editTodo(todo, editInput)">{{todo.title}}</label>
       <button class="btn-destroy-todo" (click)="removeTodo(todo.id)"></button>
     </div>
@@ -22,7 +29,9 @@
   </li>
 </ul>
 
-<app-todo-list-footer *ngIf="todos.length > 0" [todos]="todos"
+<app-todo-list-footer
+  *ngIf="todos.length > 0"
+  [todos]="todos"
   (clearCompleted)="clearCompleted()"
   (filterTypeChanged)="filterTypeChanged($event)">
 </app-todo-list-footer>
