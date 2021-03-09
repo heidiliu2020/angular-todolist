@@ -1,4 +1,4 @@
-.wrapper {
+.todolist-wrapper {
 	background: #fff;
 	margin: 130px 0 40px 0;
 	position: relative;
@@ -6,25 +6,25 @@
 	            0 25px 50px 0 rgba(0, 0, 0, 0.1);
 }
 
-.wrapper input::-webkit-input-placeholder {
+.todolist-wrapper input::-webkit-input-placeholder {
 	font-style: italic;
 	font-weight: 300;
 	color: #ddd;
 }
 
-.wrapper input::-moz-placeholder {
+.todolist-wrapper input::-moz-placeholder {
 	font-style: italic;
 	font-weight: 300;
 	color: #ddd;
 }
 
-.wrapper input::input-placeholder {
+.todolist-wrapper input::input-placeholder {
 	font-style: italic;
 	font-weight: 300;
 	color: #ddd;
 }
 
-.wrapper h1 {
+.todolist-wrapper h1 {
 	position: absolute;
 	top: -155px;
 	width: 100%;

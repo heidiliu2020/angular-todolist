@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { animate, style, transition, trigger } from '@angular/animations'
 
-import { TodoService } from './../services/todo.service';
+import { TodoService } from '../../services/todo.service';
 
 @Component({
   selector: 'app-todo-list',
