@@ -5,16 +5,16 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FilterPipe implements PipeTransform {
 
-  transform(value: any, filterType?: any): any {
+  transform(todos: any, filterType?: any): any {
     switch (filterType) {
       case 'Active':
-        return value.filter(item => !item.done);
+        return todos.filter(todo => !todo.isDone);
 
       case 'Completed':
-        return value.filter(item => item.done);
+        return todos.filter(todo => todo.isDone);
 
       default:
-        return value;
+        return todos;
     }
   }
 
