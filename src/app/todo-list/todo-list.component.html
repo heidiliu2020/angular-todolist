@@ -1,37 +1,33 @@
-<div class="input-group">
-  <!-- 屬性綁定 / 雙向綁定 / 事件綁定-->
-   <input
-    class="input-add-todo" [placeholder]="inputHint" maxlength="30"
-    [(ngModel)]="todoTitle" (keyup.enter)="addTodo()" autofocus
-  >
-  <button class="btn-add-todo" (click)="addTodo()"></button>
-</div>
-
-<!--
 <app-todo-list-header
-  [(ngModel)]="todoTitle"
-  (handleAddTodo)="addTodo($event)">
-</app-todo-list-header> -->
+  [todoTitle]="todoService.todoTitle" (handleAddTodo)="todoService.addTodo($event)">
+</app-todo-list-header>
 
 <!-- *ngIf: 判斷布林值 -->
-<ul class="todo-list" *ngIf="todos.length > 0">
+<ul class="todo-list" *ngIf="todoService.todos.length > 0">
   <!-- *ngFor: 跑迴圈 / 自訂一個 filter pipe: 篩選 Todos / ngClass: 設定 DOM 元素的 CSS class-->
-  <li *ngFor="let todo of todos | filter : filterType" @fade
+  <!-- NgClass 用法如下: [ngClass]="{completed: todo.isDone, editing: todo.isEditing}" -->
+  <li *ngFor="let todo of todoService.todos | filter : todoService.filterType" @fade
     (change)="todoService.saveTodos()"
-    [ngClass]="{completed: todo.isDone, editing: todo.isEditing}"
+    [class.completed]="todo.isDone"
+    [class.editing]="todo.isEditing"
   >
     <div class="todo-view">
       <input type="checkbox" class="input-toggle-todo" [(ngModel)]="todo.isDone">
-      <label for="editInput" (click)="editTodo(todo, editInput)">{{todo.title}}</label>
-      <button class="btn-destroy-todo" (click)="removeTodo(todo.id)"></button>
+      <label for="editInput" (click)="todoService.editTodo(todo, editInput)">{{todo.title}}</label>
+      <button class="btn-destroy-todo" (click)="todoService.removeTodo(todo.id)"></button>
     </div>
-    <input #editInput class="input-edit-todo" type="text" [(ngModel)]="todo.title" (blur)="doneEdit(todo)" (keyup.enter)="doneEdit(todo)"/>
+    <input #editInput class="input-edit-todo" type="text"
+      [(ngModel)]="todo.title"
+      (blur)="todoService.doneEdit(todo)"
+      (keyup.enter)="todoService.doneEdit(todo)"
+    />
+    <div class="todo-datetime">{{ todo.datetime }}</div>
   </li>
 </ul>
 
 <app-todo-list-footer
-  *ngIf="todos.length > 0"
-  [todos]="todos"
-  (clearCompleted)="clearCompleted()"
-  (filterTypeChanged)="filterTypeChanged($event)">
+  *ngIf="todoService.todos.length > 0"
+  [todos]="todoService.todos"
+  (clearCompleted)="todoService.clearCompleted()"
+  (filterTypeChanged)="todoService.filterTypeChanged($event)">
 </app-todo-list-footer>

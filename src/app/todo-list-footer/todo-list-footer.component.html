@@ -2,13 +2,18 @@
   <span class="todo-list-amount"><strong>{{todos.length}}</strong> items left</span>
   <ul class="todo-list-filters">
     <li>
-      <a class="selected" [ngClass]="{'selected': filterType === 'All'}" (click)="changeFilterType('All')">All</a>
+      <!-- 等同於: [ngClass]="{'selected': filterType === 'All'}"  -->
+      <a class="selected"
+        [class.selected]="filterType === 'All'"
+        (click)="changeFilterType('All')">All</a>
     </li>
     <li>
-      <a [ngClass]="{'selected': filterType === 'Active'}" (click)="changeFilterType('Active')">Active</a>
+      <a [class.selected]="filterType === 'Active'"
+          (click)="changeFilterType('Active')">Active</a>
     </li>
     <li>
-      <a [ngClass]="{'selected': filterType === 'Completed'}" (click)="changeFilterType('Completed')">Completed</a>
+      <a [class.selected]="filterType === 'Completed'"
+          (click)="changeFilterType('Completed')">Completed</a>
     </li>
   </ul>
   <button class="btn-clear-completed-todo" *ngIf="todos.length > 0" (click)="clearBtnOnClick()">Clear completed</button>

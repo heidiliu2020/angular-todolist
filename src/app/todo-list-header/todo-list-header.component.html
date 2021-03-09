@@ -1,0 +1,8 @@
+<div class="input-group">
+  <!-- 屬性綁定 / 雙向綁定 / 事件綁定-->
+   <input
+    class="input-add-todo" [placeholder]="inputHint" maxlength="30"
+    [(ngModel)]="todoTitle" (keyup.enter)="doHandleAddTodo()" autofocus
+  >
+  <button class="btn-add-todo" (click)="doHandleAddTodo()"></button>
+</div>
