@@ -1,6 +1,6 @@
-# Angular 練習：Pomodoro & Todos
+# Angular Practice：Pomodoro & Todos
 
-專案 [DEMO LINK](https://heidiliu2020.github.io/angular-todolist/)
+> 專案 [DEMO](https://heidiliu2020.github.io/angular-todolist/)
 
 - 這是結合 Pomodoro 番茄鐘與 Todos 待辦事項的 Angular 專案練習
 - 具備下列功能：
