@@ -1,39 +1,3 @@
-.wrapper {
-	background: #fff;
-	margin: 130px 0 40px 0;
-	position: relative;
-	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
-	            0 25px 50px 0 rgba(0, 0, 0, 0.1);
-}
-
-.wrapper input::-webkit-input-placeholder {
-	font-style: italic;
-	font-weight: 300;
-	color: #ddd;
-}
-
-.wrapper input::-moz-placeholder {
-	font-style: italic;
-	font-weight: 300;
-	color: #ddd;
-}
-
-.wrapper input::input-placeholder {
-	font-style: italic;
-	font-weight: 300;
-	color: #ddd;
-}
-
-.wrapper h1 {
-	position: absolute;
-	top: -155px;
-	width: 100%;
-	font-size: 100px;
-	font-weight: 100;
-	text-align: center;
-	color: rgba(175, 47, 47, 0.15);
-}
-
 .input-group {
   position: relative;
 }
@@ -67,10 +31,6 @@
 	font-size: 30px;
 	color: #cc9a9a;
 	transition: color 0.2s ease-out;
-}
-
-.btn-add-todo:before {
-  content: '＋';
 }
 
 .todo-list {

@@ -1,3 +1,5 @@
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
 html,
 body {
 	margin: 0;
@@ -26,8 +28,6 @@ body {
 	line-height: 1.4em;
 	background: #f5f5f5;
 	color: #4d4d4d;
-	min-width: 230px;
-	max-width: 550px;
 	margin: 0 auto;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
@@ -54,4 +54,55 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
+}
+
+.wrapper {
+  margin: 0 auto;
+}
+
+.wrapper h1 {
+	font-size: 80px;
+	font-weight: 300;
+	text-align: center;
+	color: rgba(175, 47, 47, 0.25);
+}
+
+.app-wrapper {
+  width: 500px;
+	background: #fff;
+	margin: 50px auto;
+	position: relative;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
+	            0 25px 50px 0 rgba(0, 0, 0, 0.1);
+}
+
+.app-wrapper input::-webkit-input-placeholder {
+	font-style: italic;
+	font-weight: 300;
+	color: #ddd;
+}
+
+.app-wrapper input::-moz-placeholder {
+	font-style: italic;
+	font-weight: 300;
+	color: #ddd;
+}
+
+.app-wrapper input::input-placeholder {
+	font-style: italic;
+	font-weight: 300;
+	color: #ddd;
+}
+
+.app-container {
+  margin-top: 60px;
+}
+
+.mat-button-toggle {
+  font-size: 28px;
+  width: 180px;
+}
+
+.mat-button-toggle-group {
+  margin: 20px auto;
 }

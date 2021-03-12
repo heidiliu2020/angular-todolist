@@ -1,6 +1,5 @@
-import { TodoService } from './../services/todo.service';
+import { TodoService } from './../../services/todo.service';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ITodo } from '../interfaces/todo';
 
 @Component({
   selector: 'app-todo-list-header',

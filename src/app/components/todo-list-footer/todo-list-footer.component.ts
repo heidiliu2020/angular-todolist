@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ITodo } from '../interfaces/todo';
+import { ITodo } from '../../interfaces/todo';
 
 @Component({
   selector: 'app-todo-list-footer',

@@ -1,12 +1,15 @@
 <div class="wrapper">
-   <!-- 內嵌綁定 -->
-  <h1>{{title}}</h1>
-  <app-todo-list></app-todo-list>
-</div>
+  <!-- Tab 切換列 -->
+  <mat-button-toggle-group value="Pomodoro">
+    <mat-button-toggle (click)="appType = 'Pomodoro'" value="Pomodoro">Pomodoro <mat-icon>timer</mat-icon></mat-button-toggle>
+    <mat-button-toggle (click)="appType = 'Todos'" value="Todos">Todos <mat-icon>edit</mat-icon></mat-button-toggle>
+  </mat-button-toggle-group>
 
-<footer class="info">
-  <p>Click todo title to edit a todo</p>
-  <p>Template by <a href="http://sindresorhus.com">Sindre Sorhus</a></p>
-  <p>Created by <a href="http://todomvc.com">you</a></p>
-  <p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
-</footer>
+  <h1>{{appType}}</h1>
+  <div class="app-wrapper" [hidden]="appType === 'Todos'">
+    <app-pomodoro></app-pomodoro>
+  </div>
+  <div class="app-wrapper" [hidden]="appType === 'Pomodoro'">
+    <app-todo-list></app-todo-list>
+  </div>
+</div>
