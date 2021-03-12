@@ -5,7 +5,7 @@
     <mat-button-toggle (click)="appType = 'Todos'" value="Todos">Todos <mat-icon>edit</mat-icon></mat-button-toggle>
   </mat-button-toggle-group>
 
-  <h1>{{appType}}</h1>
+  <h1>{{ appType }}</h1>
   <div class="app-wrapper" [hidden]="appType === 'Todos'">
     <app-pomodoro></app-pomodoro>
   </div>

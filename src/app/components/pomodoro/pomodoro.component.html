@@ -25,17 +25,17 @@
     <div class="focus-length">
       <label class="focus-length-title">Focus Length</label>
       <div class="length-controller">
-        <button class="decrement-btn" (click)="decrementFocusTime()"><mat-icon>remove</mat-icon></button>
+        <button class="decrement-btn" (click)="setFocusTime(-1)"><mat-icon>remove</mat-icon></button>
         <p class="time-length">{{ focusTime }}</p>min
-        <button class="increment-btn" (click)="incrementFocusTime()"><mat-icon>add</mat-icon></button>
+        <button class="increment-btn" (click)="setFocusTime(1)"><mat-icon>add</mat-icon></button>
       </div>
     </div>
     <div class="break-length">
       <label class="break-length-title">Break Length</label>
       <div class="length-controller">
-        <button class="decrement-btn" (click)="decrementBreakTime()"><mat-icon>remove</mat-icon></button>
+        <button class="decrement-btn" (click)="setBreakTime(-1)"><mat-icon>remove</mat-icon></button>
         <p class="time-length">{{ breakTime }}</p>min
-        <button class="increment-btn" (click)="incrementBreakTime()"><mat-icon>add</mat-icon></button>
+        <button class="increment-btn" (click)="setBreakTime(1)"><mat-icon>add</mat-icon></button>
       </div>
     </div>
   </div>

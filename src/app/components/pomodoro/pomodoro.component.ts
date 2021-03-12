@@ -78,41 +78,33 @@ export class PomodoroComponent implements OnInit {
   /**
    * Focus Length
    */
-  decrementFocusTime(): void {
-    if (this.focusTime <= 1 || this.timerStatus === TimerStatus.COUNTING) {
-      return;
+  setFocusTime(time: number): void {
+    if (this.timerStatus !== TimerStatus.COUNTING) {
+      this.focusTime += time;
+      if (this.focusTime <= 1 ) {
+        this.focusTime = 1;
+      }
+      if (this.timerType === 'FOCUS') {
+        this.totalSeconds = this.focusTime * 60;
+        this.displayTime();
+      }
     }
-    this.focusTime = this.focusTime - 1;
-    this.totalSeconds = this.focusTime * 60;
-    this.displayTime();
-  }
-
-  incrementFocusTime(): void {
-    if (this.focusTime >= 60 || this.timerStatus === TimerStatus.COUNTING) {
-      return;
-    }
-    this.focusTime = this.focusTime + 1;
-    this.totalSeconds = this.focusTime * 60;
-    this.displayTime();
   }
 
   /**
    * Break Length
    */
-  decrementBreakTime(): void {
-    if (this.breakTime <= 1 || this.timerStatus === TimerStatus.COUNTING) {
-      return;
+  setBreakTime(time: number): void {
+    if (this.timerStatus !== TimerStatus.COUNTING) {
+      this.breakTime += time;
+      if (this.breakTime <= 1 ) {
+        this.breakTime = 1;
+      }
+      if (this.timerType === 'BREAK') {
+        this.totalSeconds = this.breakTime * 60;
+        this.displayTime();
+      }
     }
-    this.breakTime = this.breakTime - 1;
-    this.displayTime();
-  }
-
-  incrementBreakTime(): void {
-    if (this.breakTime >= 60 || this.timerStatus === TimerStatus.COUNTING) {
-      return;
-    }
-    this.breakTime = this.breakTime + 1;
-    this.displayTime();
   }
 
 }
