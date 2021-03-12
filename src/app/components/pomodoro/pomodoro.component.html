@@ -1,30 +1,43 @@
 <div class="pomodoro-wrapper">
   <div class="pomodoro-header">
     <div class="timer">
-      <label class="timer-left-time">25:00</label>
-      <div class="timer-control">
-        <Button class="timer-start-btn">Start</Button>
-        <Button class="timer-pause-btn">Pause</Button>
+      <div class="timer-type">{{ timerType }}</div>
+      <div class="timer-left">
+        {{ showMinutes }}:{{ showSeconds }}
+      </div>
+      <div class="timer-buttons">
+        <button class="timer-start-btn"
+          *ngIf="timerStatus === 'PAUSE' || timerStatus === 'STOP'"
+          (click)="startTimer()"
+        ><mat-icon>play_arrow</mat-icon></button>
+        <button class="timer-pause-btn"
+          *ngIf="timerStatus === 'COUNTING'"
+          (click)="pauseTimer()"
+        ><mat-icon>pause</mat-icon></button>
+        <button class="timer-reset-btn"
+          (click)="resetTimer()"
+        ><mat-icon>cached</mat-icon></button>
       </div>
     </div>
   </div>
 
   <div class="pomodoro-footer">
     <div class="focus-length">
-      <label class="focus-length-title">Focus</label>
-      <div class="focus-length-controller">
-        <button class="focus-increment">-</button>
-        <p class="focus-length">25 min</p>
-        <button class="focus-decrement">+</button>
+      <label class="focus-length-title">Focus Length</label>
+      <div class="length-controller">
+        <button class="decrement-btn" (click)="decrementFocusTime()"><mat-icon>remove</mat-icon></button>
+        <p class="time-length">{{ focusTime }}</p>min
+        <button class="increment-btn" (click)="incrementFocusTime()"><mat-icon>add</mat-icon></button>
       </div>
     </div>
-
-  <div class="break-length">
-    <label class="break-length-title">Break</label>
-    <div class="break-length-controller">
-      <button class="break-increment">-</button>
-      <p class="break-length">5 min</p>
-      <button class="break-decrement">+</button>
+    <div class="break-length">
+      <label class="break-length-title">Break Length</label>
+      <div class="length-controller">
+        <button class="decrement-btn" (click)="decrementBreakTime()"><mat-icon>remove</mat-icon></button>
+        <p class="time-length">{{ breakTime }}</p>min
+        <button class="increment-btn" (click)="incrementBreakTime()"><mat-icon>add</mat-icon></button>
+      </div>
     </div>
   </div>
+
 </div>

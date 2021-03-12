@@ -4,5 +4,5 @@
     class="input-add-todo" [placeholder]="inputHint" maxlength="30"
     [(ngModel)]="todoTitle" (keyup.enter)="doHandleAddTodo()" autofocus
   >
-  <button class="btn-add-todo" (click)="doHandleAddTodo()"></button>
+  <button class="btn-add-todo" (click)="doHandleAddTodo()"><mat-icon>add</mat-icon></button>
 </div>

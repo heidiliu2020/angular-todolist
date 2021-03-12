@@ -1,35 +1,64 @@
 .pomodoro-wrapper {
   background: #fff;
-  padding: 30px;
+  padding: 20px;
   box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%), 0 25px 50px 0 rgb(0 0 0 / 10%);
   border-radius: 4px;
   font-size: 24px;
   box-sizing: border-box;
+
 }
 
 .pomodoro-header {
   border-bottom: 1px solid #ddd;
-  padding: 60px 0;
+  padding: 30px 0;
 }
 
 .pomodoro-header .timer {
-  width: 200px;
+  width: 280px;
   margin: 0 auto;
+  text-align: center;
 }
 
-.pomodoro-header .timer-left-time {
-  font-size: 70px;
-  font-weight: 700;
+.pomodoro-header .timer-type {
+  font-size: 32px;
+  margin-bottom: 40px;
+  font-weight: 500;
+}
+
+.pomodoro-header .timer-left {
+  font-size: 68px;
+  font-weight: 500;
+  margin: 30px;
+}
+
+.timer-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
 }
 
 .pomodoro-header button {
   background: #ddd;
-  padding: 6px 12px;
+  padding: 8px 4px;
+  font-weight: 500;
+  font-size: 20px;
+  transition: 0.3s all;
+  height: 40px;
+  width: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+
+.pomodoro-header button:hover {
+  background: #222;
+  color: #eee;
 }
 
 .pomodoro-header button:not(:last-child) {
-  margin: 20px 10px 0 0;
+  margin-right: 20px;
 }
 
 .pomodoro-footer {
@@ -42,19 +71,24 @@
   text-align: center;
 }
 
-.focus-length-controller, .break-length-controller {
+.length-controller {
   display: flex;
   align-items: center;
 }
 
-.focus-length-controller button, .break-length-controller button {
+.length-controller button {
   width: 40px;
   height: 40px;
   font-weight: 700;
   border-radius: 50%;
-  background: #999;
+  background: rgba(179, 45, 45, 0.74);;
   color: #fff;
-  padding: 6px;
   margin: 0 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+.time-length {
+  width: 50px;
+}
