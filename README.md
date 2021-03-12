@@ -1,7 +1,11 @@
 # Angular 練習：Pomodoro & Todos
 
-- 這是結合 Pomodoro 番茄鐘與 Todos 待辦事項的 Angular 專案練習。
-- 專案 [DEMO](https://heidiliu2020.github.io/angular-todolist/)
+專案 [DEMO LINK](https://heidiliu2020.github.io/angular-todolist/)
+
+- 這是結合 Pomodoro 番茄鐘與 Todos 待辦事項的 Angular 專案練習
+- 具備下列功能：
+  - Pomodoro：倒數計時功能、可自訂時間長短、可重置時間
+  - Todos：新增、刪除、編輯待辦事項功能，可切換、查看已完成/未完成狀態
 
 ## MyApp
 
