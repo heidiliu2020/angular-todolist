@@ -1,4 +1,9 @@
-# MyApp
+# Angular 練習：Pomodoro & Todos
+
+- 這是結合 Pomodoro 番茄鐘與 Todos 待辦事項的 Angular 專案練習。
+- 專案 [DEMO](https://heidiliu2020.github.io/angular-todolist/)
+
+## MyApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.0.
 
