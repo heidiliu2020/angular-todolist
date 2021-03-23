@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { TimerStatus } from 'src/app/timer-status.enum';
+
+// 定義三種計時器狀態: 停止/暫停/計時
+const enum TimerStatus {
+  STOP = 'STOP',
+  PAUSE = 'PAUSE',
+  COUNTING = 'COUNTING'
+}
 
 @Component({
   selector: 'app-pomodoro',

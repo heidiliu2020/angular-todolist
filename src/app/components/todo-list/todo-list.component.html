@@ -1,13 +1,13 @@
 
 <app-todo-list-header
-  [todoTitle]="todoService.todoTitle" (handleAddTodo)="todoService.addTodo($event)">
+  [todoTitle]="todoTitle" (handleAddTodo)="todoService.addTodo($event)">
 </app-todo-list-header>
 
 <!-- *ngIf: 判斷布林值 -->
-<ul class="todo-list" *ngIf="todoService.todos.length > 0">
+<ul class="todo-list" *ngIf="todos.length > 0">
   <!-- *ngFor: 跑迴圈 / 自訂一個 filter pipe: 篩選 Todos / ngClass: 設定 DOM 元素的 CSS class-->
-  <!-- NgClass 用法如下: [ngClass]="{completed: todo.isDone, editing: todo.isEditing}" -->
-  <li *ngFor="let todo of todoService.todos | filter : todoService.filterType" @fade
+  <!-- 或一次寫多種樣式: [class]="{completed: todo.isDone, editing: todo.isEditing}" -->
+  <li *ngFor="let todo of todos | filter : filterType" @fade
     (change)="todoService.saveTodos()"
     [class.completed]="todo.isDone"
     [class.editing]="todo.isEditing"
@@ -27,8 +27,8 @@
 </ul>
 
 <app-todo-list-footer
-  *ngIf="todoService.todos.length > 0"
-  [todos]="todoService.todos"
+  *ngIf="todos.length > 0"
+  [todos]="todos"
   (clearCompleted)="todoService.clearCompleted()"
   (filterTypeChanged)="todoService.filterTypeChanged($event)">
 </app-todo-list-footer>

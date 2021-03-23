@@ -1,3 +1,4 @@
+import { ITodo } from './../../interfaces/todo';
 import { Component, OnInit } from '@angular/core';
 import { animate, style, transition, trigger } from '@angular/animations'
 
@@ -33,6 +34,18 @@ export class TodoListComponent implements OnInit {
   // 初始化時呼叫 getTodos()
   ngOnInit(): void {
     this.todoService.getTodos();
+  }
+
+  get todos(): ITodo[] {
+    return this.todoService.todos;
+  }
+
+  get todoTitle(): string {
+    return this.todoService.todoTitle;
+  }
+
+  get filterType(): string {
+    return this.todoService.filterType;
   }
 
 }
