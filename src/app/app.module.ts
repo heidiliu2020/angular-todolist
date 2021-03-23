@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatIconModule } from '@angular/material/icon';
+import { SortablejsModule } from 'ngx-sortablejs';
 
 import { AppComponent } from 'src/app/app.component';
 import { TodoListComponent } from 'src/app/components/todo-list/todo-list.component';
@@ -27,7 +28,8 @@ import { PomodoroComponent } from './components/pomodoro/pomodoro.component';
     FormsModule,
     BrowserAnimationsModule,
     MatButtonToggleModule,
-    MatIconModule
+    MatIconModule,
+    SortablejsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

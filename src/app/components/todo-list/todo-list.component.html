@@ -3,8 +3,11 @@
   [todoTitle]="todoTitle" (handleAddTodo)="todoService.addTodo($event)">
 </app-todo-list-header>
 
-<!-- *ngIf: 判斷布林值 -->
-<ul class="todo-list" *ngIf="todos.length > 0">
+<!-- 使用 sortablejs 達成拖曳功能 -->
+<ul class="todo-list" *ngIf="todos.length > 0"
+  [sortablejs]="todos"
+  [sortablejsOptions]="{ animation: 150 }"
+>
   <!-- *ngFor: 跑迴圈 / 自訂一個 filter pipe: 篩選 Todos / ngClass: 設定 DOM 元素的 CSS class-->
   <!-- 或一次寫多種樣式: [class]="{completed: todo.isDone, editing: todo.isEditing}" -->
   <li *ngFor="let todo of todos | filter : filterType" @fade

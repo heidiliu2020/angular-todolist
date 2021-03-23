@@ -1,6 +1,6 @@
 import { ITodo } from './../../interfaces/todo';
-import { Component, OnInit } from '@angular/core';
-import { animate, style, transition, trigger } from '@angular/animations'
+import { Component, OnInit, DoCheck } from '@angular/core';
+import { animate, style, transition, trigger } from '@angular/animations';
 
 import { TodoService } from './../../services/todo.service';
 
@@ -26,7 +26,7 @@ import { TodoService } from './../../services/todo.service';
     ])
   ]
 })
-export class TodoListComponent implements OnInit {
+export class TodoListComponent implements OnInit, DoCheck {
 
   // 建構子: 注入 Service 依賴
   constructor(public todoService: TodoService) { }
@@ -34,6 +34,11 @@ export class TodoListComponent implements OnInit {
   // 初始化時呼叫 getTodos()
   ngOnInit(): void {
     this.todoService.getTodos();
+  }
+
+  // 偵測到變化時執行
+  ngDoCheck(): void {
+    this.todoService.saveTodos();
   }
 
   get todos(): ITodo[] {

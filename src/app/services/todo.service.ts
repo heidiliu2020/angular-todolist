@@ -49,7 +49,6 @@ export class TodoService {
       isEditing: false
     });
     this.todoId++;
-    this.saveTodos();
   }
 
   /**
@@ -58,7 +57,6 @@ export class TodoService {
   removeTodo(id: number): void {
     this.todos = this.todos.filter(todo => todo.id !== id);
     // 等同於 this.todos.splice(this.todos.indexOf(todo), 1);
-    this.saveTodos();
   }
 
   /**
@@ -71,7 +69,6 @@ export class TodoService {
     todo.isEditing = true;
     // 編輯時自動 focus: 需考慮執行順序
     setTimeout((): void => editInput.focus());
-    this.saveTodos();
   }
 
   /**
@@ -86,7 +83,6 @@ export class TodoService {
     if (!todo.title) {
       this.removeTodo(todo);
     }
-    this.saveTodos();
   }
 
   /**
@@ -94,7 +90,6 @@ export class TodoService {
    */
   clearCompleted(): void {     // 外層元件接收到訊息後要執行的動作
     this.todos = this.todos.filter(todo => !todo.isDone);
-    this.saveTodos();
   }
 
   /**
